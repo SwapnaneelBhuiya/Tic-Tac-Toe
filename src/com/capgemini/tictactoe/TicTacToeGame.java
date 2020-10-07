@@ -35,12 +35,14 @@ public class TicTacToeGame {
 							board[7] = player;
 						else if (board[9] == ' ')
 							board[9] = player;
-						else if (board[5] == ' ')
-							board[5] = player;
+						else if(board[5]==' ')
+							board[5]=player;
 						else
-							userInput(board, sc, player);
+							userInput(board,sc,player);
 					}
-				} else {
+				}
+				else
+				{
 					int checkOpp = checkOpponent(board, computer);
 					if (checkOpp == 1) {
 						System.out.println("Opponent is winning, enter accordingly");
@@ -54,30 +56,40 @@ public class TicTacToeGame {
 							board[7] = player;
 						else if (board[9] == ' ')
 							board[9] = player;
-						else if (board[5] == ' ')
-							board[5] = player;
+						else if(board[5]==' ')
+							board[5]=player;
 						else
-							userInput(board, sc, player);
+							userInput(board,sc,player);
 					}
-					board = computerInput(board, computer);
+					board=computerInput(board,computer);
 				}
 				validBoardCells(board);
-				move = checkTurns(board, player, computer);
-				if (move == 1) {
+				move=checkTurns(board,player,computer);
+				if(move==1)
+				{
 					System.out.println("User wins");
 					break;
-				} else if (move == 2) {
+				}
+				else if(move==2)
+				{
 					System.out.println("Computer Wins");
 					break;
-				} else if (move == 3) {
+				}
+				else if(move==3)
+				{
 					System.out.println("Match tied");
 					break;
-				} else
+				}
+				else
 					continue;
 			}
-
+			System.out.println("Do you want to play again? Press Y/N");
+			char choice = sc.next().charAt(0);
+			if (choice == 'Y')
+				continue;
+			else
+				break;
 		}
-
 	}
 	//check if opponent can win
 	public static int checkOpponent(char board[], char opp) {

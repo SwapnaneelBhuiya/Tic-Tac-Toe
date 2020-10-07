@@ -42,11 +42,17 @@ public class TicTacToeGame {
 		while (true) {
 			System.out.println("Enter the position that you want to play");
 			int pos = sc.nextInt();
-			if (board[pos] != ' ')
-				System.out.println("Enter again as position is filled");
+			if (pos < 1 || pos > 9) {
+				System.out.println("Invalid position, Enter again");
+				continue;
+			} 
 			else {
-				board[pos] = player;
-				break;
+				if (board[pos] != ' ')
+					System.out.println("Enter again as position is filled");
+				else {
+					board[pos] = player;
+					break;
+				}
 			}
 		}
 		return board;

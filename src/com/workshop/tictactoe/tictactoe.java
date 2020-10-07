@@ -6,5 +6,13 @@ public class tictactoe {
 		System.out.println("Welcome to the tictactoe problem");
 		
 	}
+	public static void UC1()
+	{
+		char board[]= {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+		for(int i=1;i<10;i++)
+		{
+			
+		}
+	}
 
 }

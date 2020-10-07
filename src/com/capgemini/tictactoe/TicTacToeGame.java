@@ -19,23 +19,23 @@ public class TicTacToeGame {
 			else
 				{
 				System.out.println("Computer will start first");
-				//board=computerInput(board,computer);
+				board=computerInput(board,computer);
 				}
 			int move;
 		}
 			
 	}
 	//Computer will make a move
-//	public static char[] computerInput(char board[], char computer) {
-//		while (true) {
-//			int pos = (int) ((Math.random() * 9) + 1);
-//			if (checkFreeSpace(board, pos)) {
-//				board[pos] = computer;
-//				break;
-//			}
-//		}
-//		return board;
-//	}
+	public static char[] computerInput(char board[], char computer) {
+		while (true) {
+			int pos = (int) ((Math.random() * 9) + 1);
+			if (checkFreeSpace(board, pos)) {
+				board[pos] = computer;
+				break;
+			}
+		}
+		return board;
+	}
 	// initialize char array for the game
 	public static char[] createArray() {
 		char board[] = new char[10];

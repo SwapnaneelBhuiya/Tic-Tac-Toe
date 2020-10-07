@@ -4,19 +4,38 @@ public class TicTacToeGame {
 	public static void main(String args[]) {
 		System.out.println("Welcome to the tictactoe problem");
 		Scanner sc = new Scanner(System.in);
-		char board[] = createArray();
-		char player = chooseCharacter(sc);
-		char computer = (player == 'X') ? 'O' : 'X';
-		System.out.println("Character chosen by computer= "+computer);
-		board=userInput(board,sc,player);
-		System.out.println("After user entry the board looks like");
-		validBoardCells(board);
-		int num=checkStart();
-		if(num==1)
-			System.out.println("User will start first");
-		else
-			System.out.println("Computer will start first");
+		while(true)
+		{
+			char board[] = createArray();
+			char player = chooseCharacter(sc);
+			char computer = (player == 'X') ? 'O' : 'X';
+			System.out.println("Character chosen by computer= "+computer);
+			board=userInput(board,sc,player);
+			int num=checkStart();
+			if(num==1)
+				{System.out.println("User will start first");
+				board=userInput(board,sc,player);
+				}
+			else
+				{
+				System.out.println("Computer will start first");
+				//board=computerInput(board,computer);
+				}
+			int move;
+		}
+			
 	}
+	//Computer will make a move
+//	public static char[] computerInput(char board[], char computer) {
+//		while (true) {
+//			int pos = (int) ((Math.random() * 9) + 1);
+//			if (checkFreeSpace(board, pos)) {
+//				board[pos] = computer;
+//				break;
+//			}
+//		}
+//		return board;
+//	}
 	// initialize char array for the game
 	public static char[] createArray() {
 		char board[] = new char[10];
@@ -71,5 +90,37 @@ public class TicTacToeGame {
 	{
 		int num=(int)((Math.random()*2)+1);
 		return num;
+	}
+	//check tie or win or change turn
+	public static int checkTurns(char board[]) {
+		int x = 0, or = 0, count_x = 0, count_y = 0;
+		for (int pos = 1; pos < 10; pos++) {
+			if (board[pos] == 'X') {
+				if ((board[pos + 1] == 'X' && board[pos + 2] == 'X') || (board[pos + 4] == 'X' && board[pos + 8] == 'X')
+						|| (board[pos + 3] == 'X' && board[pos + 6] == 'X'))
+
+				{
+					x = 1;
+					break;
+				}
+				count_x++;
+			} else if (board[pos] == 'O') {
+				if ((board[pos + 1] == 'O' && board[pos + 2] == 'O') || (board[pos + 4] == 'O' && board[pos + 8] == 'O')
+						|| (board[pos + 3] == 'O' && board[pos + 6] == 'O')) {
+					or = 1;
+					break;
+				}
+				count_y++;
+			} else
+				continue;
+		}
+		if (x == 1)
+			return 1;
+		else if (or == 1)
+			return 2;
+		else if (count_x >= 3 && count_y >= 3)
+			return 3;
+		else
+			return 4;
 	}
 }

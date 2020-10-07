@@ -42,13 +42,23 @@ public class TicTacToeGame {
 		while (true) {
 			System.out.println("Enter the position that you want to play");
 			int pos = sc.nextInt();
-			if (board[pos] != ' ')
-				System.out.println("Enter again as position is filled");
-			else {
+			if (checkFreeSpace(board, pos)) {
 				board[pos] = player;
 				break;
-			}
+			} else
+				System.out.println("Enter again as position is filled or invalid");
 		}
 		return board;
+	}
+	//check the presence of free space
+	public static boolean checkFreeSpace(char board[], int pos) {
+		if (pos < 1 || pos > 10)
+			return false;
+		else {
+			if (board[pos] == ' ')
+				return true;
+			else
+				return false;
+		}
 	}
 }

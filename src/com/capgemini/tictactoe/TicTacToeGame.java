@@ -22,6 +22,19 @@ public class TicTacToeGame {
 				board=computerInput(board,computer);
 				}
 			int move;
+			while(true)
+			{
+				if(num==1)
+				{
+					board=computerInput(board,computer);
+					int checkOpp=checkOpponent(board,computer);
+					if(checkOpp==1)
+						{System.out.println("Opponent is winning, enter accordingly");
+						userInput(board,sc,player);
+						}
+					
+				}
+			}
 		}
 			
 	}

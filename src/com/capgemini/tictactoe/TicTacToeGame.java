@@ -35,15 +35,49 @@ public class TicTacToeGame {
 							board[7] = player;
 						else if (board[9] == ' ')
 							board[9] = player;
-						else if(board[5]==' ')
-							board[5]=player;
+						else if (board[5] == ' ')
+							board[5] = player;
 						else
-							userInput(board,sc,player);
+							userInput(board, sc, player);
 					}
+				} else {
+					int checkOpp = checkOpponent(board, computer);
+					if (checkOpp == 1) {
+						System.out.println("Opponent is winning, enter accordingly");
+						userInput(board, sc, player);
+					} else {
+						if (board[1] == ' ')
+							board[1] = player;
+						else if (board[3] == ' ')
+							board[3] = player;
+						else if (board[7] == ' ')
+							board[7] = player;
+						else if (board[9] == ' ')
+							board[9] = player;
+						else if (board[5] == ' ')
+							board[5] = player;
+						else
+							userInput(board, sc, player);
+					}
+					board = computerInput(board, computer);
 				}
+				validBoardCells(board);
+				move = checkTurns(board, player, computer);
+				if (move == 1) {
+					System.out.println("User wins");
+					break;
+				} else if (move == 2) {
+					System.out.println("Computer Wins");
+					break;
+				} else if (move == 3) {
+					System.out.println("Match tied");
+					break;
+				} else
+					continue;
 			}
+
 		}
-	
+
 	}
 	//check if opponent can win
 	public static int checkOpponent(char board[], char opp) {
@@ -131,21 +165,21 @@ public class TicTacToeGame {
 		return num;
 	}
 	//check tie or win or change turn
-	public static int checkTurns(char board[]) {
+	public static int checkTurns(char board[],char player,char computer) {
 		int x = 0, or = 0, count_x = 0, count_y = 0;
 		for (int pos = 1; pos < 10; pos++) {
-			if (board[pos] == 'X') {
-				if ((board[pos + 1] == 'X' && board[pos + 2] == 'X') || (board[pos + 4] == 'X' && board[pos + 8] == 'X')
-						|| (board[pos + 3] == 'X' && board[pos + 6] == 'X'))
+			if (board[pos] == player) {
+				if ((board[pos + 1] == player && board[pos + 2] == player) || (board[pos + 4] == player && board[pos + 8] == player)
+						|| (board[pos + 3] == player && board[pos + 6] == player))
 
 				{
 					x = 1;
 					break;
 				}
 				count_x++;
-			} else if (board[pos] == 'O') {
-				if ((board[pos + 1] == 'O' && board[pos + 2] == 'O') || (board[pos + 4] == 'O' && board[pos + 8] == 'O')
-						|| (board[pos + 3] == 'O' && board[pos + 6] == 'O')) {
+			} else if (board[pos] == computer) {
+				if ((board[pos + 1] == computer && board[pos + 2] == computer) || (board[pos + 4] == computer && board[pos + 8] == computer)
+						|| (board[pos + 3] == computer && board[pos + 6] == computer)) {
 					or = 1;
 					break;
 				}

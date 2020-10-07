@@ -32,7 +32,18 @@ public class TicTacToeGame {
 						{System.out.println("Opponent is winning, enter accordingly");
 						userInput(board,sc,player);
 						}
-					
+					else
+					{
+						if(board[1]==' ')
+							board[1]=player;
+						else if(board[3]==' ')
+							board[3]=player;
+						else if(board[7]==' ')
+							board[7]=player;
+						else if(board[9]==' ')
+							board[9]=player;
+						
+					}
 				}
 			}
 		}

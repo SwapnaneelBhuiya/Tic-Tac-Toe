@@ -1,4 +1,4 @@
-package com.workshop.tictactoe;
+package com.capgemini.tictactoe;
 
 public class TicTacToeGame {
 	public static void main(String args[]) {
@@ -6,11 +6,11 @@ public class TicTacToeGame {
 		createArray();
 	}
 
-	// method for UC1 where we initialize the char array for tictactoe game
+	// initialize char array for the game
 	public static void createArray() {
 		char board[] = new char[10];
-		for (int pos = 1; pos < 10; pos++) {
-			board[pos] = ' ';
+		for (int i = 1; i < 10; i++) {
+			board[i] = ' ';
 		}
 	}
 }

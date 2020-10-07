@@ -6,7 +6,7 @@ public class TicTacToeGame {
 		createArray();
 	}
 
-	// method for UC1 where we initialize the char array for tictactoe
+	// method for UC1 where we initialize the char array for tictactoe game
 	public static void createArray() {
 		char board[] = new char[10];
 		for (int pos = 1; pos < 10; pos++) {

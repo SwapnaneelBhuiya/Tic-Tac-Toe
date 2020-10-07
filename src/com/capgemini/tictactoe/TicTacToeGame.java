@@ -11,6 +11,11 @@ public class TicTacToeGame {
 		board=userInput(board,sc,player);
 		System.out.println("After user entry the board looks like");
 		validBoardCells(board);
+		int num=checkStart();
+		if(num==1)
+			System.out.println("User will start first");
+		else
+			System.out.println("Computer will start first");
 	}
 	// initialize char array for the game
 	public static char[] createArray() {
@@ -60,5 +65,11 @@ public class TicTacToeGame {
 			else
 				return false;
 		}
+	}
+	//test who will begin first
+	public static int checkStart()
+	{
+		int num=(int)((Math.random()*2)+1);
+		return num;
 	}
 }

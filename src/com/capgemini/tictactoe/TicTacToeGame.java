@@ -25,6 +25,25 @@ public class TicTacToeGame {
 		}
 			
 	}
+	//check if opponent can win
+	public static int checkOpponent(char board[], char opp) {
+		if ((board[1] == opp && board[3] == opp && board[7] == opp)
+				|| (board[1] == opp && board[9] == opp && board[7] == opp)
+				|| (board[3] == opp && board[9] == opp && board[7] == opp))
+			return 1;
+		else {
+			for (int pos = 1; pos < 10; pos++)
+				if (board[pos] == opp && board[pos] == opp)
+					return 1;
+				else if (board[pos] == opp && board[pos + 3] == opp)
+					return 1;
+				else if (board[pos] == opp && board[pos + 4] == opp)
+					return 1;
+				else
+					continue;
+		}
+		return 0;
+	}
 	//Computer will make a move
 	public static char[] computerInput(char board[], char computer) {
 		while (true) {

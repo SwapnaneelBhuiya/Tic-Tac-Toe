@@ -6,11 +6,7 @@ public class TicTacToeGame {
 		System.out.println("Welcome to the tictactoe problem");
 		char board[] = createArray();
 		char player = chooseCharacter();
-		char computer;
-		if (player == 'X')
-			computer = 'O';
-		else
-			computer = 'X';
+		char computer=(player=='X')?'O' : 'X';
 	}
 
 	// initialize char array for the game

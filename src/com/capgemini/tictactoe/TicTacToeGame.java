@@ -4,42 +4,46 @@ public class TicTacToeGame {
 	public static void main(String args[]) {
 		System.out.println("Welcome to the tictactoe problem");
 		Scanner sc = new Scanner(System.in);
-		while(true)
-		{
+		while (true) {
 			char board[] = createArray();
 			char player = chooseCharacter(sc);
 			char computer = (player == 'X') ? 'O' : 'X';
-			System.out.println("Character chosen by computer= "+computer);
-			board=userInput(board,sc,player);
-			int num=checkStart();
-			if(num==1)
-				{System.out.println("User will start first");
-				board=userInput(board,sc,player);
-				}
-			else
-				{
+			System.out.println("Character chosen by computer= " + computer);
+			board = userInput(board, sc, player);
+			int num = checkStart();
+			if (num == 1) {
+				System.out.println("User will start first");
+				board = userInput(board, sc, player);
+			} else {
 				System.out.println("Computer will start first");
-				board=computerInput(board,computer);
-				}
+				board = computerInput(board, computer);
+			}
 			int move;
-			while(true)
-			{
-				if(num==1)
-				{
-					board=computerInput(board,computer);
-					int checkOpp=checkOpponent(board,computer);
-					if(checkOpp==1)
-						{System.out.println("Opponent is winning, enter accordingly");
-						userInput(board,sc,player);
-						}
-					else
-					{
-						
+			while (true) {
+				if (num == 1) {
+					board = computerInput(board, computer);
+					int checkOpp = checkOpponent(board, computer);
+					if (checkOpp == 1) {
+						System.out.println("Opponent is winning, enter accordingly");
+						userInput(board, sc, player);
+					} else {
+						if (board[1] == ' ')
+							board[1] = player;
+						else if (board[3] == ' ')
+							board[3] = player;
+						else if (board[7] == ' ')
+							board[7] = player;
+						else if (board[9] == ' ')
+							board[9] = player;
+						else if(board[5]==' ')
+							board[5]=player;
+						else
+							userInput(board,sc,player);
 					}
 				}
 			}
 		}
-			
+	
 	}
 	//check if opponent can win
 	public static int checkOpponent(char board[], char opp) {

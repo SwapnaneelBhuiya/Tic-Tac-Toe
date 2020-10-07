@@ -9,7 +9,6 @@ public class TicTacToeGame {
 			char player = chooseCharacter(sc);
 			char computer = (player == 'X') ? 'O' : 'X';
 			System.out.println("Character chosen by computer= " + computer);
-			board = userInput(board, sc, player);
 			int num = checkStart();
 			if (num == 1) {
 				System.out.println("User will start first");
@@ -53,7 +52,7 @@ public class TicTacToeGame {
 			return 1;
 		else {
 			for (int pos = 1; pos < 10; pos++)
-				if (board[pos] == opp && board[pos] == opp)
+				if (board[pos] == opp && board[pos+1] == opp)
 					return 1;
 				else if (board[pos] == opp && board[pos + 3] == opp)
 					return 1;

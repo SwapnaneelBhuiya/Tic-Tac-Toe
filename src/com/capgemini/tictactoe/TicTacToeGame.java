@@ -1,6 +1,9 @@
 package com.capgemini.tictactoe;
 import java.util.*;
 public class TicTacToeGame {
+	private static int count_x=0;
+	private static int count_y=0;
+	//main method
 	public static void main(String args[]) {
 		System.out.println("Welcome to the tictactoe problem");
 		Scanner sc = new Scanner(System.in);
@@ -82,6 +85,7 @@ public class TicTacToeGame {
 				else
 					continue;
 			}
+			count_x=0;count_y=0;
 			System.out.println("Do you want to play again? Press Y/N");
 			char choice = sc.next().charAt(0);
 			if (choice == 'Y')
@@ -100,9 +104,9 @@ public class TicTacToeGame {
 			for (int pos = 1; pos < 10; pos++)
 				if (board[pos] == opp && board[pos+1] == opp)
 					return 1;
-				else if (board[pos] == opp && board[pos + 3] == opp)
+				else if (board[pos] == opp &&pos!=4 &&pos!=6&& pos+3<10&&board[pos + 3] == opp )
 					return 1;
-				else if (board[pos] == opp && board[pos + 4] == opp)
+				else if (board[pos] == opp &&pos!=4 &&pos!=6&&pos+4<10&& board[pos + 4] == opp)
 					return 1;
 				else
 					continue;
@@ -112,7 +116,7 @@ public class TicTacToeGame {
 	//Computer will make a move
 	public static char[] computerInput(char board[], char computer) {
 		while (true) {
-			int pos = (int) ((Math.random() * 9) + 1);
+			int pos = (int) ((Math.random() * 8) + 1);
 			if (checkFreeSpace(board, pos)) {
 				board[pos] = computer;
 				break;
@@ -176,33 +180,37 @@ public class TicTacToeGame {
 		return num;
 	}
 	//check tie or win or change turn
-	public static int checkTurns(char board[],char player,char computer) {
-		int x = 0, or = 0, count_x = 0, count_y = 0;
-		for (int pos = 1; pos < 10; pos++) {
+	public static int checkTurns(char board[],char player,char computer){
+		int x = 0, or = 0;
+		try{
+			for (int pos = 1; pos < 10; pos++) {
+				if(board[pos]==player)count_x++;
+				if(board[pos]==computer)count_y++;
 			if (board[pos] == player) {
-				if ((board[pos + 1] == player && board[pos + 2] == player) || (board[pos + 4] == player && board[pos + 8] == player)
-						|| (board[pos + 3] == player && board[pos + 6] == player))
+				if ((board[pos + 1] == player && board[pos + 2] == player) || (board[pos+2]==player&&board[pos+5]==player)||(board[pos + 4] == player && board[pos + 8] == player)
+						|| (board[4] == player && board[7] == player)|| (board[5]==player&&board[8]==player)||(board[6]==player&&board[9]==player))
 
 				{
 					x = 1;
 					break;
 				}
-				count_x++;
-			} else if (board[pos] == computer) {
-				if ((board[pos + 1] == computer && board[pos + 2] == computer) || (board[pos + 4] == computer && board[pos + 8] == computer)
-						|| (board[pos + 3] == computer && board[pos + 6] == computer)) {
+			}
+			else if (board[pos] == computer) {
+				if ((board[pos + 1] == computer && board[pos + 2] == computer) || (board[pos+2]==computer&&board[pos+5]==computer)||(board[pos + 4] == computer && board[pos + 8] == computer)
+						|| (board[4] == computer && board[7] == computer)|| (board[5]==computer&&board[8]==computer)||(board[6]==computer&&board[9]==computer)) {
 					or = 1;
 					break;
 				}
-				count_y++;
 			} else
 				continue;
 		}
+		}
+		catch(Exception e) {}
 		if (x == 1)
 			return 1;
 		else if (or == 1)
 			return 2;
-		else if (count_x >= 3 && count_y >= 3)
+		else if (count_x>4&&count_y>4)
 			return 3;
 		else
 			return 4;
